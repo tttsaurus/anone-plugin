@@ -1,7 +1,7 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
     <id>com.cleanroommc.anoneplugin</id>
-    <name>AnoNePlugin</name>
+    <name>AnoNe</name>
     <vendor>tttsaurus</vendor>
     <description><![CDATA[
         <p><b>anone-plugin</b> is a repository that provides IDEA integration for AnoNe.</p>
@@ -9,10 +9,9 @@
 
     <depends>com.intellij.modules.platform</depends>
 
-    <resource-bundle>messages.MyBundle</resource-bundle>
+    <resource-bundle>messages.AnoneBundle</resource-bundle>
 
     <extensions defaultExtensionNs="com.intellij">
-        <toolWindow factoryClass="com.cleanroommc.anoneplugin.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
-        <postStartupActivity implementation="com.cleanroommc.anoneplugin.startup.MyProjectActivity" />
+
     </extensions>
 </idea-plugin>

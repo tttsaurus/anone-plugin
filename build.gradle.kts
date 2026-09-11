@@ -15,3 +15,15 @@ dependencies {
         testFramework(TestFrameworkType.Platform)
     }
 }
+
+intellijPlatform {
+    pluginVerification {
+        ides {
+            create("IC", "2025.2.6.2")
+            create("IC", "2025.1.7.1")
+            create("IC", "2024.3.7.1")
+            create("IC", "2024.2.6")
+            create("IC", "2024.1.7")
+        }
+    }
+}
