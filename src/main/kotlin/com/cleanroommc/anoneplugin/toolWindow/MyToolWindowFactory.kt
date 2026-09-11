@@ -1,4 +1,4 @@
-package com.github.tttsaurus.anoneplugin.toolWindow
+package com.cleanroommc.anoneplugin.toolWindow
 
 import com.intellij.openapi.components.service
 import com.intellij.openapi.diagnostic.thisLogger
@@ -8,8 +8,8 @@ import com.intellij.openapi.wm.ToolWindowFactory
 import com.intellij.ui.components.JBLabel
 import com.intellij.ui.components.JBPanel
 import com.intellij.ui.content.ContentFactory
-import com.github.tttsaurus.anoneplugin.MyBundle
-import com.github.tttsaurus.anoneplugin.services.MyProjectService
+import com.cleanroommc.anoneplugin.MyBundle
+import com.cleanroommc.anoneplugin.services.MyProjectService
 import javax.swing.JButton
 
 

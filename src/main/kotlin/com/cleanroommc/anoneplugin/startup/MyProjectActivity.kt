@@ -1,4 +1,4 @@
-package com.github.tttsaurus.anoneplugin.startup
+package com.cleanroommc.anoneplugin.startup
 
 import com.intellij.openapi.diagnostic.thisLogger
 import com.intellij.openapi.project.Project

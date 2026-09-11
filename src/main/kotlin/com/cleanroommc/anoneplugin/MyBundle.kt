@@ -1,4 +1,4 @@
-package com.github.tttsaurus.anoneplugin
+package com.cleanroommc.anoneplugin
 
 import com.intellij.DynamicBundle
 import org.jetbrains.annotations.NonNls
