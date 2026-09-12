@@ -8,10 +8,13 @@
     ]]></description>
 
     <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.java</depends>
 
     <resource-bundle>messages.AnoneBundle</resource-bundle>
 
     <extensions defaultExtensionNs="com.intellij">
+
+        <implicitUsageProvider implementation="com.cleanroommc.anoneplugin.reveal.RevealImplicitUsageProvider"/>
 
     </extensions>
 </idea-plugin>
