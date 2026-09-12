@@ -7,10 +7,10 @@ import com.intellij.psi.PsiMethod
 import com.intellij.psi.PsiModifierListOwner
 import com.intellij.psi.util.PsiTreeUtil
 
-const val CAN_IGNORE_RETURN_VALUE =
+private const val CAN_IGNORE_RETURN_VALUE =
     "com.cleanroommc.anone.value.CanIgnoreReturnValue"
 
-val CHECK_RETURN_VALUE_ANNOTATIONS = setOf(
+private val CHECK_RETURN_VALUE_ANNOTATIONS = setOf(
     "com.google.errorprone.annotations.CheckReturnValue",
     "edu.umd.cs.findbugs.annotations.CheckReturnValue",
     "org.jetbrains.annotations.CheckReturnValue",

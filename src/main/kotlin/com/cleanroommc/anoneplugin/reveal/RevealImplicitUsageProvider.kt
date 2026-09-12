@@ -6,12 +6,12 @@ import com.intellij.psi.PsiField
 import com.intellij.psi.PsiMethod
 import com.intellij.psi.PsiModifierListOwner
 
-val ACCESS_ANNOTATIONS = setOf(
+private val ACCESS_ANNOTATIONS = setOf(
     "com.cleanroommc.anone.reveal.GeneratedAccess",
     "com.cleanroommc.anone.reveal.ReflectiveAccess",
 )
 
-val INVOCATION_ANNOTATIONS = setOf(
+private val INVOCATION_ANNOTATIONS = setOf(
     "com.cleanroommc.anone.reveal.GeneratedInvocation",
     "com.cleanroommc.anone.reveal.ReflectiveInvocation",
 )
