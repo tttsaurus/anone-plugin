@@ -1,0 +1,23 @@
+<html lang="en">
+<body>
+<p>
+    Reports invocations of methods annotated with <code>@OverrideOnly</code>.
+</p>
+
+<p>
+    Methods marked with <code>@OverrideOnly</code> are intended to be overridden rather than called directly.
+    Calls through <code>super</code> are allowed.
+</p>
+
+<pre><code>
+class Base {
+    @OverrideOnly
+    void hook() {}
+}
+
+void use(Base base) {
+    base.hook(); // reported
+}
+</code></pre>
+</body>
+</html>

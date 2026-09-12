@@ -21,5 +21,23 @@
                 language="JAVA"
                 implementationClass="com.cleanroommc.anoneplugin.value.CanIgnoreReturnValueInspectionSuppressor"/>
 
+        <localInspection
+                language="JAVA"
+                shortName="AnoNeInvokeOnly"
+                groupKey="inspection.anone.group.name"
+                enabledByDefault="true"
+                level="ERROR"
+                implementationClass="com.cleanroommc.anoneplugin.canon.InvokeOnlyInspection"
+                key="inspection.anone.invokeOnly.display.name"/>
+
+        <localInspection
+                language="JAVA"
+                shortName="AnoNeOverrideOnly"
+                groupKey="inspection.anone.group.name"
+                enabledByDefault="true"
+                level="ERROR"
+                implementationClass="com.cleanroommc.anoneplugin.canon.OverrideOnlyInspection"
+                key="inspection.anone.overrideOnly.display.name"/>
+
     </extensions>
 </idea-plugin>

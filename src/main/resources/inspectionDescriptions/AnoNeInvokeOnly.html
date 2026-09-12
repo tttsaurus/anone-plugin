@@ -1,0 +1,23 @@
+<html lang="en">
+<body>
+<p>
+    Reports methods that override a method annotated with <code>@InvokeOnly</code>.
+</p>
+
+<p>
+    Methods marked with <code>@InvokeOnly</code> are intended to be invoked directly and must not be overridden.
+</p>
+
+<pre><code>
+class Base {
+    @InvokeOnly
+    void run() {}
+}
+
+class Child extends Base {
+    @Override
+    void run() {} // reported
+}
+</code></pre>
+</body>
+</html>
