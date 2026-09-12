@@ -39,5 +39,14 @@
                 implementationClass="com.cleanroommc.anoneplugin.canon.OverrideOnlyInspection"
                 key="inspection.anone.overrideOnly.display.name"/>
 
+        <localInspection
+                language="JAVA"
+                shortName="AnoNeOverrideOnlyBypass"
+                groupKey="inspection.anone.group.name"
+                enabledByDefault="true"
+                level="WARNING"
+                implementationClass="com.cleanroommc.anoneplugin.canon.SusOverrideOnlyBypassInspection"
+                key="inspection.anone.overrideOnlyBypass.display.name"/>
+
     </extensions>
 </idea-plugin>

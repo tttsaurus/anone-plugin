@@ -1,0 +1,41 @@
+<html lang="en">
+<body>
+<p>
+    Reports calls to overriding methods that bypass an <code>@OverrideOnly</code> contract declared by a super method.
+</p>
+
+<p>
+    A method overriding an <code>@OverrideOnly</code> method is not itself restricted by the annotation.
+    However, invoking the overriding method from unrelated code may effectively bypass the original contract.
+</p>
+
+<pre><code>
+class Base {
+    @OverrideOnly
+    void hook() {}
+}
+
+class Child extends Base {
+    @Override
+    void hook() {
+        super.hook(); // OK
+    }
+
+    void run() {
+        hook(); // reported
+    }
+}
+</code></pre>
+
+<!-- tooltip end -->
+
+<p>
+    This inspection reports suspicious bypasses only. Such calls do not directly violate the
+    <code>@OverrideOnly</code> annotation on the overriding method, because that method is not annotated itself.
+</p>
+
+<p>
+    Calls to <code>super</code> from the corresponding overriding implementation are allowed.
+</p>
+</body>
+</html>
