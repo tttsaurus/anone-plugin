@@ -3,8 +3,12 @@ package com.cleanroommc.anoneplugin.value
 import com.intellij.codeInspection.InspectionSuppressor
 import com.intellij.codeInspection.SuppressQuickFix
 import com.intellij.psi.PsiElement
+import com.intellij.psi.PsiLambdaExpression
 import com.intellij.psi.PsiMethod
+import com.intellij.psi.PsiMethodCallExpression
+import com.intellij.psi.PsiMethodReferenceExpression
 import com.intellij.psi.PsiModifierListOwner
+import com.intellij.psi.PsiStatement
 import com.intellij.psi.util.PsiTreeUtil
 
 private const val CAN_IGNORE_RETURN_VALUE =
@@ -18,17 +22,31 @@ private val CHECK_RETURN_VALUE_ANNOTATIONS = setOf(
     "javax.annotation.CheckReturnValue"
 )
 
+private const val UNUSED_RETURN_VALUE_ID =
+    "UnusedReturnValue"
+
+private val RESULT_IGNORED_INSPECTION_IDS = setOf(
+    "ResultOfMethodCallIgnored",
+    "IgnoreResultOfCall"
+)
+
 class CanIgnoreReturnValueInspectionSuppressor : InspectionSuppressor {
 
     override fun isSuppressedFor(
         element: PsiElement,
         toolId: String
     ): Boolean {
-        if (toolId != "UnusedReturnValue") {
-            return false
-        }
+        val method = when (toolId) {
+            UNUSED_RETURN_VALUE_ID ->
+                findContainingMethod(element)
 
-        val method = findContainingMethod(element) ?: return false
+            in RESULT_IGNORED_INSPECTION_IDS ->
+                resolveCalledMethod(element)
+
+            else ->
+                null
+        } ?: return false
+
         return canIgnoreReturnValue(method)
     }
 
@@ -56,6 +74,28 @@ class CanIgnoreReturnValueInspectionSuppressor : InspectionSuppressor {
         }
 
         return false
+    }
+
+    private fun resolveCalledMethod(element: PsiElement): PsiMethod? {
+        var current: PsiElement? = element
+        while (current != null) {
+            when (current) {
+                is PsiMethodCallExpression ->
+                    return current.resolveMethod()
+
+                is PsiMethodReferenceExpression ->
+                    return current.resolve() as? PsiMethod
+
+                is PsiStatement,
+                is PsiLambdaExpression,
+                is PsiMethod ->
+                    return null
+            }
+
+            current = current.parent
+        }
+
+        return null
     }
 
     private fun findContainingMethod(element: PsiElement): PsiMethod? {
