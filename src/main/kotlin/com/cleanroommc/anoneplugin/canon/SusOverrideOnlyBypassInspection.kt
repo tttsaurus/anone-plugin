@@ -16,9 +16,7 @@ class SusOverrideOnlyBypassInspection : LocalInspectionTool() {
     ): PsiElementVisitor {
         return object : JavaElementVisitor() {
 
-            override fun visitMethodCallExpression(
-                expression: PsiMethodCallExpression
-            ) {
+            override fun visitMethodCallExpression(expression: PsiMethodCallExpression) {
                 val target = expression.resolveMethod() ?: return
                 if (target.hasDirectAnnotation(OVERRIDE_ONLY)) {
                     return

@@ -10,7 +10,7 @@
     <depends>com.intellij.modules.platform</depends>
     <depends>com.intellij.java</depends>
 
-    <resource-bundle>messages.AnoneBundle</resource-bundle>
+    <resource-bundle>messages.AnoNeBundle</resource-bundle>
 
     <extensions defaultExtensionNs="com.intellij">
 
@@ -47,6 +47,15 @@
                 level="WARNING"
                 implementationClass="com.cleanroommc.anoneplugin.canon.SusOverrideOnlyBypassInspection"
                 key="inspection.anone.overrideOnlyBypass.display.name"/>
+
+        <localInspection
+                language="JAVA"
+                shortName="AnoNeMustNotClose"
+                groupKey="inspection.anone.group.name"
+                enabledByDefault="true"
+                level="ERROR"
+                implementationClass="com.cleanroommc.anoneplugin.lifecycle.MustNotCloseInspection"
+                key="inspection.anone.mustNotClose.display.name"/>
 
     </extensions>
 </idea-plugin>
