@@ -7,6 +7,7 @@ import com.intellij.psi.JavaElementVisitor
 import com.intellij.psi.PsiElementVisitor
 import com.intellij.psi.PsiMethod
 import com.intellij.psi.PsiModifierListOwner
+import java.util.ArrayDeque
 
 private const val INVOKE_ONLY = "com.cleanroommc.anone.canon.InvokeOnly"
 
@@ -23,16 +24,38 @@ class InvokeOnlyInspection : LocalInspectionTool() {
                     return
                 }
 
-                val invokeOnlySuper = method.findSuperMethods().firstOrNull {
-                    it.hasDirectAnnotation(INVOKE_ONLY)
-                } ?: return
+                val invokeOnlySuper = method.findInvokeOnlySuper() ?: return
 
                 holder.registerProblem(
                     method.nameIdentifier ?: method,
-                    AnoNeBundle.message("inspection.anone.invokeOnly.problem", invokeOnlySuper.name)
+                    AnoNeBundle.message(
+                        "inspection.anone.invokeOnly.problem",
+                        invokeOnlySuper.containingClass?.name + "#" + invokeOnlySuper.name
+                    )
                 )
             }
         }
+    }
+
+    private fun PsiMethod.findInvokeOnlySuper(): PsiMethod? {
+        val visited = HashSet<PsiMethod>()
+        val remaining = ArrayDeque<PsiMethod>()
+        remaining.addAll(findSuperMethods())
+
+        while (remaining.isNotEmpty()) {
+            val superMethod = remaining.removeFirst()
+            if (!visited.add(superMethod)) {
+                continue
+            }
+
+            if (superMethod.hasDirectAnnotation(INVOKE_ONLY)) {
+                return superMethod
+            }
+
+            remaining.addAll(superMethod.findSuperMethods())
+        }
+
+        return null
     }
 
     private fun PsiModifierListOwner.hasDirectAnnotation(qualifiedName: String): Boolean {

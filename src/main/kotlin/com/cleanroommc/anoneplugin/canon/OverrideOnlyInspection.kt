@@ -32,7 +32,10 @@ class OverrideOnlyInspection : LocalInspectionTool() {
 
                 holder.registerProblem(
                     expression.methodExpression.referenceNameElement ?: expression.methodExpression,
-                    AnoNeBundle.message("inspection.anone.overrideOnly.problem", target.name)
+                    AnoNeBundle.message(
+                        "inspection.anone.overrideOnly.problem",
+                        target.containingClass?.name + "#" + target.name
+                    )
                 )
             }
         }
