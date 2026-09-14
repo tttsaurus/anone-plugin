@@ -75,5 +75,23 @@
                 implementationClass="com.cleanroommc.anoneplugin.canon.MustNotCallAtInspection"
                 key="inspection.anone.mustNotCallAt.display.name"/>
 
+        <localInspection
+                language="JAVA"
+                shortName="AnoNeInvalidMustNotCloseTarget"
+                groupKey="inspection.anone.group.name"
+                enabledByDefault="true"
+                level="ERROR"
+                implementationClass="com.cleanroommc.anoneplugin.lifecycle.InvalidMustNotCloseTargetInspection"
+                key="inspection.anone.invalidMustNotCloseTarget.display.name"/>
+
+        <localInspection
+                language="JAVA"
+                shortName="AnoNeInvalidCallAtContract"
+                groupKey="inspection.anone.group.name"
+                enabledByDefault="true"
+                level="ERROR"
+                implementationClass="com.cleanroommc.anoneplugin.canon.InvalidCallAtContractInspection"
+                key="inspection.anone.invalidCallAtContract.display.name"/>
+
     </extensions>
 </idea-plugin>

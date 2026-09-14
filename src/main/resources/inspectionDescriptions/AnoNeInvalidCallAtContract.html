@@ -1,0 +1,17 @@
+<html lang="en">
+<body>
+<p>
+    Detects invalid or contradictory <code>@MustCallAt</code> and <code>@MustNotCallAt</code> contracts.
+</p>
+
+<p>
+    Reports empty or duplicate scope roots, ineffective <code>Super.class</code> scopes,
+    and contracts that both require and forbid the same call.
+</p>
+
+<pre><code>
+@MustCallAt(scopeRoot = {}) // reported
+void initialize() {}
+</code></pre>
+</body>
+</html>

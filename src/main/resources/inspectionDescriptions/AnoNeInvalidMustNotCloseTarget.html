@@ -1,0 +1,17 @@
+<html lang="en">
+<body>
+<p>
+    Detects <code>@MustNotClose</code> annotations applied to values that are not closeable.
+</p>
+
+<p>
+    <code>@MustNotClose</code> describes resource ownership, so the annotated field, parameter,
+    or method return type must implement <code>AutoCloseable</code>.
+</p>
+
+<pre><code>
+@MustNotClose
+String name; // reported
+</code></pre>
+</body>
+</html>
