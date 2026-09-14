@@ -1,0 +1,25 @@
+<html lang="en">
+<body>
+<p>
+    Detects overriding methods that omit a required call.
+</p>
+
+<p>
+    The required position and override scope are defined by <code>@MustCallAt</code>.
+</p>
+
+<pre><code>
+class Base {
+    @MustCallAt
+    void initialize() {}
+}
+
+class Child extends Base {
+    @Override
+    void initialize() { // reported
+        prepare();
+    }
+}
+</code></pre>
+</body>
+</html>

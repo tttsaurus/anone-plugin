@@ -1,0 +1,25 @@
+<html lang="en">
+<body>
+<p>
+    Detects forbidden calls made from overriding methods.
+</p>
+
+<p>
+    The forbidden position and override scope are defined by <code>@MustNotCallAt</code>.
+</p>
+
+<pre><code>
+class Base {
+    @MustNotCallAt(position = CallPosition.ANYWHERE)
+    void initialize() {}
+}
+
+class Child extends Base {
+    @Override
+    void initialize() {
+        super.initialize(); // reported
+    }
+}
+</code></pre>
+</body>
+</html>
